@@ -4,7 +4,6 @@
 
 #include "AsphericSurface.h"
 
-
 double c_ray_param_eq(double t, double c, double k, double z0, double y0,
                       double theta, double A, double B, double z_l) {
 
@@ -17,13 +16,22 @@ double c_ray_param_eq(double t, double c, double k, double z0, double y0,
 
 double c_ray_param_eq_prime(double t, double c, double k, double z0, double y0,
                             double theta, double A, double B, double z_l) {
-  return 4 * A *pow(t * sin(theta) + y0, 3) * sin(theta) +
-      6 * B *pow(t * sin(theta) + y0, 5) * sin(theta) +
-      pow(c, 3) * (k + 1) * pow(t * sin(theta) + y0, 3) * sin(theta) /
-          (sqrt(-pow(c, 2) * (k + 1) * pow(t * sin(theta) + y0, 2) + 1) *
-           pow(sqrt(-pow(c, 2) * (k + 1) * pow(t * sin(theta) + y0, 2) + 1) + 1,
-               2)) +
-      2 * c *(t * sin(theta) + y0) * sin(theta) /
-          (sqrt(-pow(c, 2) * (k + 1) * pow(t * sin(theta) + y0, 2) + 1) + 1) -
-      cos(theta);
+  return 4 * A * pow(t * sin(theta) + y0, 3) * sin(theta) +
+         6 * B * pow(t * sin(theta) + y0, 5) * sin(theta) +
+         pow(c, 3) * (k + 1) * pow(t * sin(theta) + y0, 3) * sin(theta) /
+             (sqrt(-pow(c, 2) * (k + 1) * pow(t * sin(theta) + y0, 2) + 1) *
+              pow(sqrt(-pow(c, 2) * (k + 1) * pow(t * sin(theta) + y0, 2) + 1) +
+                      1,
+                  2)) +
+         2 * c * (t * sin(theta) + y0) * sin(theta) /
+             (sqrt(-pow(c, 2) * (k + 1) * pow(t * sin(theta) + y0, 2) + 1) +
+              1) -
+         cos(theta);
 }
+
+AsphericSurface::AsphericSurface(double curvature, double z_0, double konic,
+                                 double aperture_radius, double A, double B,
+                                 bool record_rays, std::string material,
+                                 bool end_beam)
+    : z_0(z_0), c(curvature), k(konic), aperture_radius(aperture_radius), A(A),
+      B(B), record_rays(record_rays) {}
