@@ -20,8 +20,10 @@ public:
 
   double get_normal_vec(double yp, double epsilon = 0.01);
 
+
 private:
   double c, k, z_0, A, B, aperture_radius;
+  double y_min,y_max; //Future: future version may have shifts in y
   bool record_rays;
   std::vector<OpticalRay> ray_bins;
 

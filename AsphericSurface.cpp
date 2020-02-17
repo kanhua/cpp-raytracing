@@ -34,4 +34,12 @@ AsphericSurface::AsphericSurface(double curvature, double z_0, double konic,
                                  bool record_rays, std::string material,
                                  bool end_beam)
     : z_0(z_0), c(curvature), k(konic), aperture_radius(aperture_radius), A(A),
-      B(B), record_rays(record_rays) {}
+      B(B), record_rays(record_rays) {
+
+  y_min=-aperture_radius;
+  y_max=aperture_radius;
+
+  //TODO: load attenuation coefficients
+
+}
+
