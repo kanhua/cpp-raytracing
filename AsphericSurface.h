@@ -18,32 +18,35 @@ double c_ray_param_eq_prime(const double &t, double c, double k, double z0,
                             double z_l);
 
 struct aspheric_surface_functor {
-  aspheric_surface_functor(){};
 
-  aspheric_surface_functor(double c, double k, double A, double B, double z_l)
-      : c(c), k(k), A(A), B(B), z_l(z_l) {}
+  aspheric_surface_functor(double c=0, double k=0, double A=0, double B=0, double z_l=0)
+      : c(c), k(k), A(A), B(B), z_l(z_l) {
+    ray_z0=0;
+    ray_y0=0;
+    theta=0;
+  }
 
   std::pair<double, double> operator()(double const &t) {
     // f(x)
-    double fx = c_ray_param_eq(t, c = c, k = k, z0 = z0, y0 = y0, theta = theta,
-                               A = A, B = B, z_l = z_l);
+    double fx = c_ray_param_eq(t, c, k, ray_z0, ray_y0, theta,
+                               A, B, z_l);
 
     // first derivative f'(x)
-    double fpx=c_ray_param_eq_prime(t, c = c, k = k, z0 = z0, y0 = y0, theta = theta,
-                                    A = A, B = B, z_l = z_l);
+    double fpx=c_ray_param_eq_prime(t, c, k, ray_z0, ray_y0, theta,
+                                    A, B, z_l);
 
     return std::make_pair(fx,fpx);
 
   }
-  void set_ray_param(double z0, double y0, double theta)
+  void set_ray_param(double in_ray_z0, double in_ray_y0, double in_ray_theta)
   {
-    z0=z0;
-    y0=y0;
-    theta=theta;
+    ray_z0 = in_ray_z0;
+    ray_y0 = in_ray_y0;
+    theta= in_ray_theta;
   }
 
 private:
-  double c, k, z0, y0, theta, A, B, z_l;
+  double c, k, ray_z0, ray_y0, theta, A, B, z_l;
 };
 
 
