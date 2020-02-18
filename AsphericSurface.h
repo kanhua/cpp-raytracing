@@ -49,6 +49,18 @@ private:
   double c, k, ray_z0, ray_y0, theta, A, B, z_l;
 };
 
+struct const_refractive_index_functor{
+  const_refractive_index_functor(double const nr): nr(nr){};
+
+  double operator()(double wavelength){
+    return nr;
+  }
+
+ private:
+  double nr;
+
+};
+
 
 class AsphericSurface {
 public:
@@ -61,11 +73,18 @@ public:
 
   double get_normal_vec(double yp, double epsilon = 0.01);
 
+  void intersect(OpticalRay ray,const_refractive_index_functor prev_n);
+
+  double get_surface_zr(double r);
+
+  Eigen::Vector2d get_refraction(double yp,OpticalRay ray,double prev_n);
+
 
 private:
   double c, k, z_0, A, B, aperture_radius;
   double y_min,y_max; //Future: future version may have shifts in y
   bool record_rays;
+  bool end_beam;
   std::vector<OpticalRay> ray_bins;
   aspheric_surface_functor _as_surface_func;
 

@@ -56,3 +56,11 @@ void OpticalRay::update_theta(double new_theta) {
   k=Eigen::Vector2d(std::cos(theta),std::sin(theta));
 
 }
+
+double OpticalRay::estimate_t(double target_z) {
+
+  double t=(target_z-v_0(0))/k(0);
+
+  return t;
+
+}

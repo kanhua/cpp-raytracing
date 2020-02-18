@@ -31,6 +31,11 @@ class OpticalRay {
 
   void update_theta(double new_theta);
 
+  double estimate_t(double target_z);
+
+  Eigen::Vector2d get_next_v0(double delta_t){return v_0+k*delta_t;};
+
+
 };
 
 #endif //CPP_RAYTRACING__OPTICAL_RAY_H_
