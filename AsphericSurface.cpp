@@ -146,3 +146,18 @@ void AsphericSurface::intersect(OpticalRay ray,
         end_beam); // TODO: change attenuation coefficients here
   }
 }
+
+std::pair<Eigen::VectorXd ,Eigen::VectorXd > AsphericSurface::render_plot_points(){
+  Eigen::VectorXd rs=Eigen::VectorXd::LinSpaced(300,-aperture_radius,aperture_radius);
+  Eigen::VectorXd zs=rs;
+
+  for (int i=0;i<rs.size();i++)
+  {
+    zs(i)=spherical_lens_prime(rs(i),c,k,A,B);
+  }
+
+  return std::make_pair(zs,rs);
+
+
+
+}

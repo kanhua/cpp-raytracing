@@ -79,7 +79,7 @@ public:
 
   Eigen::Vector2d get_refraction(double yp,OpticalRay ray,double prev_n);
 
-
+  std::pair<Eigen::VectorXd ,Eigen::VectorXd > render_plot_points();
 private:
   double c, k, z_0, A, B, aperture_radius;
   double y_min,y_max; //Future: future version may have shifts in y
