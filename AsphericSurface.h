@@ -68,10 +68,10 @@ public:
                   double aperture_radius, double A, double B, bool record_rays,
                   std::string material, bool end_beam);
 
-  double get_tangent_vec(double yp, double epsilon = 0.01,
-                         double normalize = true);
+  Eigen::Vector2d get_tangent_vec(double yp, double epsilon = 0.01,
+                         bool normalize = true);
 
-  double get_normal_vec(double yp, double epsilon = 0.01);
+  Eigen::Vector2d get_normal_vec(double yp, double epsilon = 0.01);
 
   void intersect(OpticalRay ray,const_refractive_index_functor prev_n);
 
@@ -87,6 +87,7 @@ private:
   bool end_beam;
   std::vector<OpticalRay> ray_bins;
   aspheric_surface_functor _as_surface_func;
+  const_refractive_index_functor _nr_functor;
 
 };
 
