@@ -26,6 +26,7 @@ private:
   PlfltPtr _x_data_ptr;
   PlfltPtr _y_data_ptr;
   double _xmin, _ymin, _xmax, _ymax;
+  int _len;
 
 };
 

@@ -13,6 +13,7 @@ DataPlot<T>::DataPlot(const T &x, const T &y){
   _xmax =x.maxCoeff();
   _ymin =y.minCoeff();
   _ymax =y.maxCoeff();
+  _len=x.size();
 
 }
 
@@ -51,7 +52,7 @@ void DataPlot<T>::render_plot() {
   pls->lab( "x", "y=100 x#u2#d", "Simple PLplot demo of a 2D line plot" );
 
   // Plot the data that was prepared above.
-  pls->line( 3, _x_data_ptr.get(), _y_data_ptr.get() );
+  pls->line( _len, _x_data_ptr.get(), _y_data_ptr.get() );
 
   // In C++ we don't call plend() to close PLplot library
   // this is handled by the destructor

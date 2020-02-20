@@ -1,7 +1,7 @@
 #include <iostream>
 #include "gtest/gtest.h"
 #include "AsphericSurface.h"
-
+#include "DataPlot.h"
 
 
 TEST(surface, initialize){
@@ -11,5 +11,7 @@ TEST(surface, initialize){
   auto r=surface1.render_plot_points();
   std::cout << r.first;
   std::cout << r.second;
+  DataPlot dp(r.first,r.second);
+  dp.render_plot();
 
 }
