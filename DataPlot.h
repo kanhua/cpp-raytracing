@@ -2,18 +2,15 @@
 // Created by E284652 on 2/20/2020.
 //
 
+#ifndef CPP_RAYTRACING_DATAPLOT_H
+#define CPP_RAYTRACING_DATAPLOT_H
 
-#ifndef CPP_RAYTRACING_PLOT_HELPER_H
-#define CPP_RAYTRACING_PLOT_HELPER_H
+#include<memory>
+#include"plstream.h"
 
-#include <memory>
-#include "plstream.h"
-#include "Eigen/Dense"
+void test_func(int a,int b);
 
 typedef std::unique_ptr<PLFLT[]> PlfltPtr;
-
-
-template<typename T>void ordin_func(T &a, T &b){};
 
 template<class T>
 class DataPlot{
@@ -23,18 +20,14 @@ public:
 
   void render_plot();
 
-
 private:
 
   void convert_vector_to_plflt_array(T x, T y);
   PlfltPtr _x_data_ptr;
   PlfltPtr _y_data_ptr;
-
+  double _xmin, _ymin, _xmax, _ymax;
 
 };
 
-
-
-
-
-#endif // CPP_RAYTRACING_PLOT_HELPER_H
+#include "DataPlot.cpp"
+#endif // CPP_RAYTRACING_DATAPLOT_H

@@ -23,7 +23,6 @@
 
 #include <memory>
 #include "plc++demos.h"
-#include "plot_helper.h"
 
 #ifdef PL_USE_NAMESPACE
 using namespace std;

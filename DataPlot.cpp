@@ -1,11 +1,19 @@
+//
+// Created by E284652 on 2/20/2020.
+//
 
-#include "plot_helper.h"
-#include "plstream.h"
-
+#include "DataPlot.h"
+#include <algorithm>
 
 template<class T>
 DataPlot<T>::DataPlot(const T &x, const T &y){
   convert_vector_to_plflt_array(x,y);
+
+  _xmin =x.minCoeff();
+  _xmax =x.maxCoeff();
+  _ymin =y.minCoeff();
+  _ymax =y.maxCoeff();
+
 }
 
 
@@ -38,19 +46,19 @@ void DataPlot<T>::render_plot() {
   pls->init();
 
   // Create a labelled box to hold the plot.
-  //pls->env( xmin, xmax, ymin, ymax, 0, 0 );
+
+  pls->env(_xmin, _xmax, _ymin, _ymax, 0, 0 );
   pls->lab( "x", "y=100 x#u2#d", "Simple PLplot demo of a 2D line plot" );
 
   // Plot the data that was prepared above.
   pls->line( 3, _x_data_ptr.get(), _y_data_ptr.get() );
 
-
   // In C++ we don't call plend() to close PLplot library
   // this is handled by the destructor
   delete pls;
 
+}
 
-
-
-
+void test_func(int a, int b){
+  a+b;
 }

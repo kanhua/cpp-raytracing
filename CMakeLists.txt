@@ -23,8 +23,8 @@ target_link_libraries(test_plplot plplotcxx)
 add_executable(test_aspheric_surface tests/test_aspheric_surface.cpp OpticalRay.cpp OpticalRay.h AsphericSurface.cpp AsphericSurface.h)
 target_link_libraries(test_aspheric_surface gtest_main)
 
-add_executable(test_plplot_uniqueptr tests/plc++demos.h tests/test_plplot_unique_ptr.cpp plot_helper.h plot_helper.cpp)
+add_executable(test_plplot_uniqueptr tests/plc++demos.h tests/test_plplot_unique_ptr.cpp)
 target_link_libraries(test_plplot_uniqueptr plplotcxx)
 
-add_executable(test_plplot_helper plot_helper.h plot_helper.cpp tests/test_plplot_helper.cpp)
+add_executable(test_plplot_helper tests/test_plplot_helper.cpp)
 target_link_libraries(test_plplot_helper plplotcxx gtest_main)
