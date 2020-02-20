@@ -12,20 +12,16 @@
 
 typedef std::unique_ptr<PLFLT[]> PlfltPtr;
 
-template<typename T>
-std::pair<std::unique_ptr<PLFLT[]> ,std::unique_ptr<PLFLT[]>> convert_vector_to_plflt_array(T x,
-    T y);
 
 template<typename T>void ordin_func(T &a, T &b){};
-
-template<typename T>
-std::unique_ptr<PLFLT[]> convert_vector_to_plflt_array(T x);
 
 template<class T>
 class DataPlot{
 
 public:
   DataPlot(const T &x, const T &y);
+
+  void render_plot();
 
 
 private:

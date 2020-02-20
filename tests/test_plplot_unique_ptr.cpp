@@ -57,8 +57,6 @@ x00::x00( int argc, char **argv )
     y[i] = ymax * x[i] * x[i];
   }
 
-  std::unique_ptr<PLFLT[]> xx=convert_vector_to_plflt_array(Eigen::VectorXd::Ones(5));
-
 
   for ( i = 0; i < dyn_size; i++ )
   {

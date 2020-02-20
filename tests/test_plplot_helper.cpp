@@ -20,6 +20,7 @@ TEST(test_converter,test1){
   ordin_func(a,b);
 
   DataPlot<Eigen::VectorXd> dpt(a,b);
+  dpt.render_plot();
 
  // for ( int i = 0; i < a.size(); i++ )
   //{
