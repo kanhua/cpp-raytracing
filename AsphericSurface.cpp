@@ -153,7 +153,7 @@ std::pair<Eigen::VectorXd ,Eigen::VectorXd > AsphericSurface::render_plot_points
 
   for (int i=0;i<rs.size();i++)
   {
-    zs(i)=spherical_lens_prime(rs(i),c,k,A,B);
+    zs(i)=get_surface_zr(rs(i));
   }
 
   return std::make_pair(zs,rs);

@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.15)
+cmake_minimum_required(VERSION 3.10)  #default CLion uses Version 3.15
 project(cpp_raytracing)
 
 set(CMAKE_CXX_STANDARD 17)
@@ -8,6 +8,7 @@ add_subdirectory("googletest/")
 
 find_package(Boost)
 include_directories(${Boost_INCLUDE_DIRS})
+include_directories("./")
 
 link_directories(${Boost_LIBRARY_DIR})
 
@@ -18,3 +19,12 @@ target_link_libraries(test_newton gtest_main)
 
 add_executable(test_plplot tests/plc++demos.h tests/test_plplot.cpp)
 target_link_libraries(test_plplot plplotcxx)
+
+add_executable(test_aspheric_surface tests/test_aspheric_surface.cpp OpticalRay.cpp OpticalRay.h AsphericSurface.cpp AsphericSurface.h tests/test_plplot_helper.cpp)
+target_link_libraries(test_aspheric_surface gtest_main)
+
+add_executable(test_plplot_uniqueptr tests/plc++demos.h tests/test_plplot_unique_ptr.cpp plot_helper.h plot_helper.cpp)
+target_link_libraries(test_plplot_uniqueptr plplotcxx)
+
+add_executable(test_plplot_helper plot_helper.h plot_helper.cpp tests/test_plplot_helper.cpp)
+target_link_libraries(test_plplot_helper plplotcxx gtest_main)
