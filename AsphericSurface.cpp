@@ -107,7 +107,7 @@ Eigen::Vector2d AsphericSurface::get_normal_vec(double yp, double epsilon) {
   return norm_vec;
 }
 
-void AsphericSurface::intersect(OpticalRay ray,
+void AsphericSurface::intersect(OpticalRay &ray,
                                 const_refractive_index_functor prev_n) {
 
   // guess the next intersection point
@@ -157,7 +157,4 @@ std::pair<Eigen::VectorXd ,Eigen::VectorXd > AsphericSurface::render_plot_points
   }
 
   return std::make_pair(zs,rs);
-
-
-
 }

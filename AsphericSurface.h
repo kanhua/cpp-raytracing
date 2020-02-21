@@ -73,7 +73,7 @@ public:
 
   Eigen::Vector2d get_normal_vec(double yp, double epsilon = 0.01);
 
-  void intersect(OpticalRay ray,const_refractive_index_functor prev_n);
+  void intersect(OpticalRay &ray,const_refractive_index_functor prev_n);
 
   double get_surface_zr(double r);
 
