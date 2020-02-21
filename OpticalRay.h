@@ -35,6 +35,8 @@ class OpticalRay {
 
   Eigen::Vector2d get_next_v0(double delta_t){return v_0+k*delta_t;};
 
+  std::pair<Eigen::ArrayXd, Eigen::ArrayXd> render_plot_points();
+
 
 };
 

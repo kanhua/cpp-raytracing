@@ -2,6 +2,7 @@
 #include "gtest/gtest.h"
 #include "AsphericSurface.h"
 #include "DataPlot.h"
+#include "OpticalRay.h"
 
 
 TEST(surface, initialize){
@@ -13,5 +14,17 @@ TEST(surface, initialize){
   std::cout << r.second;
   DataPlot dp(r.first,r.second);
   dp.render_plot();
+
+}
+
+TEST(ray, initialize){
+  OpticalRay ray(-10,0,0,500);
+
+  ray.update_after_intersect(30,-0.1,1, false);
+
+  auto xy=ray.render_plot_points();
+
+  DataPlot dpt(xy.first, xy.second);
+  dpt.render_plot();
 
 }
