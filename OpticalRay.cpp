@@ -7,9 +7,9 @@
 
 OpticalRay::OpticalRay(double z_0, double y_0, double theta, double wavelength)
     : z_0(z_0), y_0(y_0), theta(theta), wavelength(wavelength) {
-  this->k(std::cos(theta), std::sin(theta));
+  this->k<<std::cos(theta), std::sin(theta);
   this->intensity = 1.0;
-  this->v_0(z_0, y_0);
+  this->v_0<<z_0, y_0;
   this->attenu_coef_list.push_back(1.0);
   this->end_ts.push_back(std::numeric_limits<double>::infinity());
   this->dt = 0;
@@ -51,7 +51,7 @@ void OpticalRay::update_after_intersect(double t_end, double new_theta,
 void OpticalRay::update_theta(double new_theta) {
   theta = new_theta;
 
-  k = Eigen::Vector2d(std::cos(theta), std::sin(theta));
+  k << std::cos(theta), std::sin(theta);
 }
 
 double OpticalRay::estimate_t(double target_z) {
