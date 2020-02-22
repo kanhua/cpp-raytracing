@@ -31,14 +31,19 @@ TEST(ray, initialize){
 TEST(ray, intersect){
 
   AsphericSurface surface1(1.0/19.0,3,0,10,0,0,false,"PMMA",false);
-  OpticalRay ray(-1,0,0,500);
+  OpticalRay ray(-1,2,0,500);
+  //OpticalRay ray2(-1,0,0,500);
   const_refractive_index_functor nr(1.0);
 
   surface1.intersect(ray,nr);
 
   auto xy=ray.render_plot_points();
 
-  DataPlot dpt(xy.first, xy.second);
-  dpt.render_plot();
+  auto r=surface1.render_plot_points();
 
+  PLStreamWrapper pls("test1.svg");
+
+  pls._plstream->env(-5,5,-5,5,0,0);
+  pls.plot(xy.first,xy.second);
+  pls.plot(r.first,r.second);
 }

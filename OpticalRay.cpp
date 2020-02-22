@@ -61,17 +61,27 @@ double OpticalRay::estimate_t(double target_z) {
   return t;
 }
 
-std::pair<Eigen::ArrayXd, Eigen::ArrayXd> OpticalRay::render_plot_points() {
+std::pair<Eigen::ArrayXd, Eigen::ArrayXd> OpticalRay::render_plot_points(double end_time) {
 
-  Eigen::ArrayXd x_arr(paths.size());
-  Eigen::ArrayXd y_arr(paths.size());
+  Eigen::ArrayXd x_arr(paths.size()+1);
+  Eigen::ArrayXd y_arr(paths.size()+1);
   for (int idx = 0; idx < paths.size(); idx++) {
     std::pair<Eigen::Vector2d, double> v_0_theta = paths[idx];
     auto v_0 = v_0_theta.first;
     auto theta = v_0_theta.second;
     x_arr[idx] = v_0[0];
-    y_arr[idx] = v_0[0];
+    y_arr[idx] = v_0[1];
   }
+
+  // plot the section after the intersetion
+  double delta_t=end_time-end_ts[end_ts.size()-2];
+  //get last elements
+  auto last_v_0_theta=paths[paths.size()-1];
+  auto v_0=last_v_0_theta.first;
+  auto theta=last_v_0_theta.second;
+  x_arr[paths.size()]=v_0[0]+delta_t*cos(theta);
+  y_arr[paths.size()]=v_0[1]+delta_t*sin(theta);
+
 
   return std::make_pair(x_arr,y_arr);
 }

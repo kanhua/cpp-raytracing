@@ -2,7 +2,6 @@
 // Created by E284652 on 2/20/2020.
 //
 
-#include "DataPlot.h"
 #include <algorithm>
 
 template<class T>
@@ -29,9 +28,23 @@ void DataPlot<T>::convert_vector_to_plflt_array(T x, T y) {
     y_ptr[i] = (PLFLT)y(i);
   }
 
-  _x_data_ptr=std::move(x_ptr);
+  _x_data_ptr=to_plflt_array(x);
   _y_data_ptr=std::move(y_ptr);
 }
+
+template<class T>
+std::unique_ptr<PLFLT[]> to_plflt_array(T x)
+{
+  std::unique_ptr<PLFLT[]> x_ptr = std::make_unique<PLFLT[]>(x.size());
+  for (int i=0;i<x.size();i++)
+  {
+    x_ptr[i] = (PLFLT)x(i);
+  }
+
+  return std::move(x_ptr);
+
+}
+
 
 template<class T>
 void DataPlot<T>::render_plot() {
@@ -60,6 +73,32 @@ void DataPlot<T>::render_plot() {
 
 }
 
-void test_func(int a, int b){
-  a+b;
+
+template<class T> void PLStreamWrapper::adjust_layout(T &x, T &y) {
+  double _temp_xmin =x.minCoeff();
+  double _temp_xmax =x.maxCoeff();
+  double _temp_ymin =y.minCoeff();
+  double _temp_ymax =y.maxCoeff();
+
+  if (_temp_xmax>_xmax) _xmax=_temp_xmax;
+  if (_temp_ymax>_ymax) _ymax=_temp_ymax;
+  if (_temp_xmin<_xmin) _xmin=_temp_xmin;
+  if (_temp_ymin<_ymin) _ymin=_temp_ymin;
+
+  _plstream->env(_xmin,_xmax,_ymin,_ymax,0,0);
+
+
+}
+
+template<class T> void PLStreamWrapper::plot (T &x, T &y)
+{
+  std::unique_ptr<PLFLT[]> x_ptr = to_plflt_array(x);
+  std::unique_ptr<PLFLT[]> y_ptr = to_plflt_array(y);
+
+  //adjust_layout(x,y);
+
+  _plstream->lab( "z", "y", "Simple PLplot demo of a 2D line plot" );
+
+  _plstream->line(x.size(),x_ptr.get(),y_ptr.get());
+
 }

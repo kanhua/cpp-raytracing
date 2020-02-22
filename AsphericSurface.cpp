@@ -115,6 +115,9 @@ void AsphericSurface::intersect(OpticalRay &ray,
   double t_min_p_2 = ray.estimate_t(z_0);
   double guess = std::min(t_min_p_1, t_min_p_2);
 
+  // Set ray parameter in surface functor
+  _as_surface_func.set_ray_param(ray.z_0,ray.y_0,ray.theta);
+
   double epsilon = 0.5;
 
   const int digits =
@@ -127,6 +130,7 @@ void AsphericSurface::intersect(OpticalRay &ray,
   boost::uintmax_t it = maxit;
   double intersect_t = boost::math::tools::newton_raphson_iterate(
       _as_surface_func, guess, guess / 2, guess * 2, get_digits, it);
+
 
   Eigen::Vector2d next_v = ray.get_next_v0(intersect_t);
 
