@@ -99,4 +99,6 @@ template<class T> void PLStreamWrapper::plot (T &x, T &y)
 
   _plstream->lab( "z", "y", "Simple PLplot demo of a 2D line plot" );
 
+  _plstream->line(x.size(),x_ptr.get(),y_ptr.get());
+
 }

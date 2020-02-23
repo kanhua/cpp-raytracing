@@ -49,9 +49,11 @@ AsphericSurface::AsphericSurface(double curvature, double z_0, double konic,
   y_max = aperture_radius;
   _as_surface_func = aspheric_surface_functor(c, k, A, B, z_0);
 
-  //auto material_map=init_material_map();
+  auto material_map=init_material_map();
 
-  //_nr_functor(material_map[material]);
+  //_nr_functor=const_refractive_index_functor(1.5);
+
+  _nr_functor=const_refractive_index_functor(material_map[material]);
 
   // TODO: load attenuation coefficients
 }
@@ -171,7 +173,7 @@ std::map<std::string, double> material_map;
 material_map.insert(
     std::make_pair("PMMA",1.5));
 material_map.insert(
-    std::make_pair("air", 0.0));
+    std::make_pair("air", 1.0));
 
 return material_map;
 }
