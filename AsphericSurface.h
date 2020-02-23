@@ -7,6 +7,7 @@
 
 #include <string>
 #include <vector>
+#include <map>
 #include "OpticalRay.h"
 
 double c_ray_param_eq(const double &t, double c, double k, double z0, double y0,
@@ -62,6 +63,10 @@ struct const_refractive_index_functor{
 };
 
 
+std::map<std::string, double> init_material_map();
+
+
+
 class AsphericSurface {
 public:
   AsphericSurface(double curvature, double z_0, double konic,
@@ -80,6 +85,7 @@ public:
   Eigen::Vector2d get_refraction(double yp,OpticalRay ray,double prev_n);
 
   std::pair<Eigen::VectorXd ,Eigen::VectorXd > render_plot_points();
+    const_refractive_index_functor _nr_functor;
 private:
   double c, k, z_0, A, B, aperture_radius;
   double y_min,y_max; //Future: future version may have shifts in y
@@ -87,7 +93,6 @@ private:
   bool end_beam;
   std::vector<OpticalRay> ray_bins;
   aspheric_surface_functor _as_surface_func;
-  const_refractive_index_functor _nr_functor;
 
 };
 

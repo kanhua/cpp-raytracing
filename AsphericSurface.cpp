@@ -48,8 +48,10 @@ AsphericSurface::AsphericSurface(double curvature, double z_0, double konic,
   y_min = -aperture_radius;
   y_max = aperture_radius;
   _as_surface_func = aspheric_surface_functor(c, k, A, B, z_0);
-  _nr_functor =
-      const_refractive_index_functor(1.5); // TODO: load refractive index
+
+  //auto material_map=init_material_map();
+
+  //_nr_functor(material_map[material]);
 
   // TODO: load attenuation coefficients
 }
@@ -161,4 +163,15 @@ std::pair<Eigen::VectorXd ,Eigen::VectorXd > AsphericSurface::render_plot_points
   }
 
   return std::make_pair(zs,rs);
+}
+
+std::map<std::string, double> init_material_map() {
+
+std::map<std::string, double> material_map;
+material_map.insert(
+    std::make_pair("PMMA",1.5));
+material_map.insert(
+    std::make_pair("air", 0.0));
+
+return material_map;
 }
