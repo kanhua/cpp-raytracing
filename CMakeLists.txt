@@ -6,6 +6,14 @@ set(CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS} "-pthread -I/usr/include/plplot -lplplotc
 
 add_subdirectory("googletest/")
 
+#set(yaml-cpp_DIR /home/kanhua/Documents/yaml-cpp/build)
+find_package(yaml-cpp)
+
+include_directories(${yaml-cpp_INCLUDE_DIRS})
+link_directories(${yaml-cpp_LIBRARY_DIRS})
+add_definitions(${yaml-cpp_DEFINITIONS})
+
+
 find_package(Boost)
 include_directories(${Boost_INCLUDE_DIRS})
 include_directories("./")
@@ -28,3 +36,6 @@ target_link_libraries(test_plplot_uniqueptr plplotcxx)
 
 add_executable(test_plplot_helper tests/test_plplot_helper.cpp)
 target_link_libraries(test_plplot_helper plplotcxx gtest_main)
+
+add_executable(test_yaml tests/test_yaml.cpp)
+target_link_libraries(test_yaml yaml-cpp gtest_main ${yaml-cpp_LIBRARIES})
