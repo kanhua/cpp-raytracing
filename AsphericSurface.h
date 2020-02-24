@@ -8,6 +8,7 @@
 #include <string>
 #include <vector>
 #include <map>
+#include "yaml-cpp/yaml.h"
 #include "OpticalRay.h"
 
 double c_ray_param_eq(const double &t, double c, double k, double z0, double y0,
@@ -95,5 +96,8 @@ private:
   aspheric_surface_functor _as_surface_func;
 
 };
+
+AsphericSurface parse_from_yaml_node(YAML::Node surface_node);
+
 
 #endif //CPP_RAYTRACING__ASPHERICSURFACE_H_

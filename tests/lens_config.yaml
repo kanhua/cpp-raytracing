@@ -1,0 +1,19 @@
+surfaces:
+  -
+    curvature: 0.02
+    z_0: -2
+    konic: 0
+    aperture_radius: 3
+    A: 0
+    B: 0
+    material: "pmma"
+  -
+    curvature: -0.02
+    z_0: 2.0
+    konic: 0
+    aperture_radius: 3
+    A: 0
+    B: 0
+    material: "air"
+
+output_fig_file: "test1.svg"
