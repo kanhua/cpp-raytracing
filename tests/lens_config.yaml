@@ -6,7 +6,7 @@ surfaces:
     aperture_radius: 3
     A: 0
     B: 0
-    material: "pmma"
+    material: "PMMA"
   -
     curvature: -0.02
     z_0: 2.0
@@ -15,5 +15,15 @@ surfaces:
     A: 0
     B: 0
     material: "air"
-
+rays:
+  -
+    z_0: -3.0
+    y_0: 1.0
+    theta: 0.0
+    wavelength: 500.0
+  -
+    z_0: -3.0
+    y_0: -1.0
+    theta: 0.0
+    wavelength: 500.0
 output_fig_file: "test1.svg"

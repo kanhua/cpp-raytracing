@@ -179,7 +179,7 @@ return material_map;
 }
 
 
-AsphericSurface parse_from_yaml_node(YAML::Node surface_node)
+AsphericSurface parse_surface_from_yaml_node(YAML::Node surface_node)
 {
   return AsphericSurface(surface_node["curvature"].as<double>(),
                          surface_node["z_0"].as<double>(),surface_node["konic"].as<double>(),

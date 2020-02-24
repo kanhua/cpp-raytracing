@@ -4,6 +4,7 @@
 
 #include <vector>
 #include "Eigen/Dense"
+#include "yaml-cpp/yaml.h"
 
 #ifndef CPP_RAYTRACING__OPTICAL_RAY_H_
 #define CPP_RAYTRACING__OPTICAL_RAY_H_
@@ -40,4 +41,5 @@ class OpticalRay {
 
 };
 
+OpticalRay parse_ray_from_yaml_node(YAML::Node ray_node);
 #endif //CPP_RAYTRACING__OPTICAL_RAY_H_

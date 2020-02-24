@@ -97,7 +97,7 @@ private:
 
 };
 
-AsphericSurface parse_from_yaml_node(YAML::Node surface_node);
+AsphericSurface parse_surface_from_yaml_node(YAML::Node surface_node);
 
 
 #endif //CPP_RAYTRACING__ASPHERICSURFACE_H_
