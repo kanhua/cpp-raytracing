@@ -37,5 +37,5 @@ target_link_libraries(test_plplot_uniqueptr plplotcxx)
 add_executable(test_plplot_helper tests/test_plplot_helper.cpp)
 target_link_libraries(test_plplot_helper plplotcxx gtest_main)
 
-add_executable(test_yaml tests/test_yaml.cpp AsphericSurface.cpp OpticalRay.cpp)
+add_executable(test_yaml tests/test_yaml.cpp AsphericSurface.cpp OpticalRay.cpp OpticalSystem.cpp)
 target_link_libraries(test_yaml yaml-cpp gtest_main ${yaml-cpp_LIBRARIES} plplotcxx)
