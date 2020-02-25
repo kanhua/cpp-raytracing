@@ -21,6 +21,7 @@ include_directories("./")
 link_directories(${Boost_LIBRARY_DIR})
 
 add_executable(cpp_raytracing main.cpp OpticalRay.cpp OpticalRay.h AsphericSurface.cpp AsphericSurface.h)
+target_link_libraries(cpp_raytracing plplotcxx  yaml-cpp)
 
 add_executable(test_newton tests/test_newton.cpp)
 target_link_libraries(test_newton gtest_main)
