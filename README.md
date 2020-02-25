@@ -17,4 +17,11 @@ The following install procedures only tested on Ubuntu Linux
   - Run ```make``` and then ```sudo make install```.
  or ```sudo apt-get install libyaml-cpp-dev```
  
+## Structure of the program
+
+This program 
+
+
+
+
 ## Execution of the program

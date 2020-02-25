@@ -5,6 +5,7 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS} "-pthread")
 
 add_subdirectory("googletest/")
+#add_subdirectory("abseil-cpp/")
 
 #set(yaml-cpp_DIR /home/kanhua/Documents/yaml-cpp/build)
 find_package(yaml-cpp REQUIRED)
@@ -15,7 +16,7 @@ pkg_check_modules(PLPLOT REQUIRED plplot-c++)
 
 add_definitions(${yaml-cpp_DEFINITIONS})
 
-include_directories(${Boost_INCLUDE_DIRS} ${yaml-cpp_INCLUDE_DIRS} ${PLPLOT_INCLUDE_DIRS} "./")
+include_directories(${Boost_INCLUDE_DIRS} ${yaml-cpp_INCLUDE_DIRS} ${PLPLOT_INCLUDE_DIRS} "./" "eigen/")
 
 #link_directories(${Boost_LIBRARY_DIR})
 #link_directories(${yaml-cpp_LIBRARY_DIRS})
