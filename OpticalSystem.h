@@ -19,7 +19,7 @@ public:
   void add_ray(OpticalRay ray);
   void solve();
   OpticalRay solve_single_ray(OpticalRay &current_ray);
-  void render_plot();
+  void render_plot(std::string svg_filename);
 
 private:
   std::vector<AsphericSurface> _surfaces;

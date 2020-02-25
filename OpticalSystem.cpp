@@ -31,9 +31,9 @@ void OpticalSystem::solve() {
 
 }
 
-void OpticalSystem::render_plot() {
+void OpticalSystem::render_plot(std::string svg_filename) {
 
-  PLStreamWrapper pls("quick_optical_system_plot.svg");
+  PLStreamWrapper pls(svg_filename);
 
   pls._plstream->env(-3, 15, -5, 5, 0, 0);
 

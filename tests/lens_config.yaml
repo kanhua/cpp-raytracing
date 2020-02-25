@@ -1,6 +1,6 @@
 surfaces:
   -
-    curvature: 0.02
+    curvature: 0.08
     z_0: -2
     konic: 0
     aperture_radius: 3
@@ -8,7 +8,7 @@ surfaces:
     B: 0
     material: "PMMA"
   -
-    curvature: -0.02
+    curvature: -0.08
     z_0: 2.0
     konic: 0
     aperture_radius: 3

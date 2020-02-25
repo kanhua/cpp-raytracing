@@ -45,6 +45,6 @@ TEST(yaml, load_optical_system){
 
   optsys.solve();
 
-  optsys.render_plot();
+  optsys.render_plot(config["output_fig_file"].as<std::string>());
 
 }
