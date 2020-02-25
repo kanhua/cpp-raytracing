@@ -17,8 +17,6 @@ TEST(test_converter,test1){
   Eigen::VectorXd b(3);
   b<<1,2,3;
 
-  test_func(1,2);
-
   DataPlot<Eigen::VectorXd> dpt(a,b);
   dpt.render_plot();
 
