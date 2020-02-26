@@ -15,8 +15,9 @@ OpticalRay OpticalSystem::solve_single_ray(OpticalRay &current_ray) {
   for (auto iter = _surfaces.begin(); iter != _surfaces.end(); iter++) {
     if (iter == _surfaces.begin()) {
       iter->intersect(current_ray, const_refractive_index_functor(1.0));
+    }else {
+      iter->intersect(current_ray, (iter - 1)->_nr_functor);
     }
-    iter->intersect(current_ray, (iter - 1)->_nr_functor);
   }
 
   return current_ray;
@@ -25,8 +26,7 @@ OpticalRay OpticalSystem::solve_single_ray(OpticalRay &current_ray) {
 void OpticalSystem::solve() {
 
   for (int index=0;index<_rays.size();index++) {
-    auto temp_ray=solve_single_ray(_rays[index]);
-    _rays[index]=temp_ray;
+    solve_single_ray(_rays[index]);
   }
 
 }

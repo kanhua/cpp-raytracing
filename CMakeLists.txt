@@ -26,7 +26,7 @@ set(RAY_TRACING_SRC OpticalRay.cpp AsphericSurface.cpp OpticalSystem.cpp)
 set(HELPER_LIB yaml-cpp ${PLPLOT_LIBRARIES})
 
 message( ${PLPLOT_LIBRARIES} )
-#message( ${yaml_cpp_LIBRARIES} )
+message( ${Boost_INCLUDE_DIRS} )
 
 add_library(main_lib ${RAY_TRACING_SRC})
 target_link_libraries(main_lib yaml-cpp ${PLPLOT_LIBRARIES})

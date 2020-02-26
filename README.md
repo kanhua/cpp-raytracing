@@ -21,7 +21,4 @@ The following install procedures only tested on Ubuntu Linux
 
 This program 
 
-
-
-
 ## Execution of the program
