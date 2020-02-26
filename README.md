@@ -83,3 +83,17 @@ For example:
 Upon successful run, this program should generate a SVG file that plots the ray tracing results.
 
 
+## Project Rubrics
+
+### Loops, Functions, I/O
+- The project demonstrates an understanding of C++ functions and control structures.
+- The project reads data from a file and process the data, or the program writes data to a file.
+
+### Object-Oriented Programming
+- The project uses Object Oriented Programming techniques.
+- Classes use appropriate access specifiers for class members.
+- Templates generalize functions in the project.
+
+### Memory management
+- The project makes use of references in function declarations.
+- The project uses smart pointers instead of raw pointers.
