@@ -75,25 +75,48 @@ In ```build``` directory, run the command ```cpp-raytracing``` using the followi
 ```config_filename``` is a yaml file that sets the lenses and the rays parameters for the program to run.
 
 
-For example:
+For example, if the executable sits in ```build/``` directory in project root folder, you can type:
 
 ```$xslt
 ./cpp-raytracing ../examples/single_biconvex_lens.yaml
 ```
 Upon successful run, this program should generate a SVG file that plots the ray tracing results.
+You can try other example yaml files in ```examples/``` folder.
+
+### Project structure
+
+The entry class of the simulation is ```OpticalSystem```, which consists of vectors of ```OpticalRays``` and ```AsphericSurfaces```.
+```AsphericSurfaces``` class manages the shape of the lens surfaces; ```OpticalRays``` records the paths of each light rays.
+The key algorithm of this program occurs 
+in ```AsphericSurface::intersect(OpticalRay &ray, const_refractive_index_functor prev_n)```, 
+which calculates the intersection between a ray and a lens surface, and then calculates the refracted path after that.
+
+Then, the simulated data is plotted by PlPlot library via the wrapper ```PLStreamWrapper```.
 
 
 ## Project Rubrics
+This project is the capstone project of Udacity C++ Nanodegree.
+This program meets the following rubrics set by Udacity:
 
 ### Loops, Functions, I/O
-- The project demonstrates an understanding of C++ functions and control structures.
-- The project reads data from a file and process the data, or the program writes data to a file.
+- **The project demonstrates an understanding of C++ functions and control structures**:
+this program uses many for-loop and If-clauses.
+- **The project reads data from a file and process the data, or the program writes data to a file**: 
+this program reads process the input data of a YAML file, and then output the result figure to a SVG file.
+
 
 ### Object-Oriented Programming
-- The project uses Object Oriented Programming techniques.
-- Classes use appropriate access specifiers for class members.
-- Templates generalize functions in the project.
+- **The project uses Object Oriented Programming techniques**: this program encapsulates the ray-tracing algorithms
+in ```OpticalRays``` and ```AsphericSurfaces``` classes. 
+- **Classes use appropriate access specifiers for class members**: ```public``` and ```private``` specifiers were used in all of the classes.
+- **Templates generalize functions in the project**: ```template<class T> void PLStreamWrapper::plot (T &x, T &y)``` 
+can accepts input of any container types that implements ```[]``` operators.
 
 ### Memory management
-- The project makes use of references in function declarations.
-- The project uses smart pointers instead of raw pointers.
+- **The project makes use of references in function declarations**:
+Functions such as ```AsphericSurface::intersect(OpticalRay &ray, const_refractive_index_functor prev_n)``` and  
+```AsphericSurface::intersect(OpticalRay &ray, const_refractive_index_functor prev_n)``` uses references as function arguments.
+- **The project uses smart pointers instead of raw pointers**:
+ ```template<class T> void PLStreamWrapper::plot (T &x, T &y)``` 
+ converts the contents in the container ```x``` and ```y```  into C-style dynamic array, 
+ pointed by unique_ptr, and then use ```.get()``` function to pass them into ```plstrem->line()``` function.

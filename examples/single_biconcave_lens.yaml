@@ -1,0 +1,29 @@
+surfaces:
+  -
+    curvature: -0.08
+    z_0: -1
+    konic: 0
+    aperture_radius: 3
+    A: 0
+    B: 0
+    material: "PMMA"
+  -
+    curvature: 0.08
+    z_0: 2.0
+    konic: 0
+    aperture_radius: 3
+    A: 0
+    B: 0
+    material: "air"
+rays:
+  -
+    z_0: -3.0
+    y_0: 1.0
+    theta: 0.0
+    wavelength: 500.0
+  -
+    z_0: -3.0
+    y_0: -1.0
+    theta: 0.0
+    wavelength: 500.0
+output_fig_file: "single_biconcave_lens.svg"
