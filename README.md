@@ -1,7 +1,10 @@
 # Ray Tracing
 
-Inline-style: 
-![alt text](./cmake-build-debug-wsl/test1.svg)
+This program implements the core algorithm of sequential ray-tracing. 
+Instead of using ray transfer matrix (a.k.a. ABCD matrix), this program uses differential geometry, 
+which can cope with any parameterizable surfaces.
+
+![alt text](examples/convex_lens_1.svg)
 
 
 ## Installation and build
@@ -14,7 +17,7 @@ The following install procedures only tested on Ubuntu Linux
 - Download and add Eigen library
 - Install plplot: ```sudo apt-get install libplplot-dev``` ```pkg-config --cflags --libs plplot-c++```
 - Install yaml-cpp:
-  - Downlaod [yaml-cpp](https://github.com/jbeder/yaml-cpp)
+  - Download [yaml-cpp](https://github.com/jbeder/yaml-cpp)
   - Make a ```./build``` directory
   - Run ```cmake ..```
   - Run ```make``` and then ```sudo make install```.
