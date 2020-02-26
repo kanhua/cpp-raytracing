@@ -26,4 +26,4 @@ rays:
     y_0: -1.0
     theta: 0.0
     wavelength: 500.0
-output_fig_file: "convex_lens_1.svg"
+output_fig_file: "single_biconvex_lens.svg"

@@ -1,5 +1,8 @@
 # Ray Tracing
 
+Inline-style: 
+![alt text](./cmake-build-debug-wsl/test1.svg)
+
 
 ## Installation and build
 
@@ -17,8 +20,63 @@ The following install procedures only tested on Ubuntu Linux
   - Run ```make``` and then ```sudo make install```.
  or ```sudo apt-get install libyaml-cpp-dev```
  
-## Structure of the program
+## Dependencies
 
-This program 
+This software builds with googletest and eigen, please make sure you add ```--recurse-submodules``` 
+when cloning the repo, i.e.,
+```bash
+git clone https://github.com/kanhua/cpp-raytracing.git --recurse-submodules
+```
+ 
+This software requires the following external libraries
 
-## Execution of the program
+#### Boost
+ Download Boost and set ```-DBOOST_ROOT=/your/boost/library``` when running cmake.
+ 
+#### plplot
+
+Use apt-get: 
+```sudo apt-get install libplplot-dev``` 
+then check if the package exists by:
+```pkg-config --cflags --libs plplot-c++``` or
+```pkg-config --cflags --libs plplotd-c++```
+
+#### yaml-cpp
+
+Use ```sudo apt-get install libyaml-cpp-dev```
+
+Alternatively:
+  - Downlaod [yaml-cpp](https://github.com/jbeder/yaml-cpp)
+  - Make a ```./build``` directory
+  - Run ```cmake ..```
+  - Run ```make``` and then ```sudo make install```.
+  
+## Build
+
+In the root folder of this repo:
+
+```bash
+mkdir build
+cd build
+cmake ..
+make
+```
+
+## Run the program
+
+In ```build``` directory, run the command ```cpp-raytracing``` using the following usage
+```
+./cpp-raytracing [config_filename]
+```
+
+```config_filename``` is a yaml file that sets the lenses and the rays parameters for the program to run.
+
+
+For example:
+
+```$xslt
+./cpp-raytracing ../examples/single_biconvex_lens.yaml
+```
+Upon successful run, this program should generate a SVG file that plots the ray tracing results.
+
+
