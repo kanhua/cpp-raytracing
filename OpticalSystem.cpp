@@ -10,7 +10,7 @@ void OpticalSystem::add_surface(AsphericSurface sf) {
 
 void OpticalSystem::add_ray(OpticalRay ray) { _rays.emplace_back(ray); }
 
-OpticalRay OpticalSystem::solve_single_ray(OpticalRay &current_ray) {
+void OpticalSystem::solve_single_ray(OpticalRay &current_ray) {
 
   for (auto iter = _surfaces.begin(); iter != _surfaces.end(); iter++) {
     if (iter == _surfaces.begin()) {
@@ -20,7 +20,6 @@ OpticalRay OpticalSystem::solve_single_ray(OpticalRay &current_ray) {
     }
   }
 
-  return current_ray;
 }
 
 void OpticalSystem::solve() {
