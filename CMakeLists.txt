@@ -2,7 +2,8 @@ cmake_minimum_required(VERSION 3.10)  #default CLion uses Version 3.15
 project(cpp_raytracing)
 
 set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS} "-pthread")
+#set(CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS} "-pthread")
+set(CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS})
 
 add_subdirectory("googletest/")
 #add_subdirectory("abseil-cpp/")
@@ -37,17 +38,17 @@ target_link_libraries(cpp_raytracing main_lib)
 add_executable(test_newton tests/test_newton.cpp)
 target_link_libraries(test_newton gtest_main)
 
-add_executable(test_plplot tests/plc++demos.h tests/test_plplot.cpp)
-target_link_libraries(test_plplot ${HELPER_LIB})
+#add_executable(test_plplot tests/plc++demos.h tests/test_plplot.cpp)
+#target_link_libraries(test_plplot ${HELPER_LIB})
 
 add_executable(test_aspheric_surface tests/test_aspheric_surface.cpp)
 target_link_libraries(test_aspheric_surface gtest_main ${HELPER_LIB} main_lib)
 
-add_executable(test_plplot_uniqueptr tests/plc++demos.h tests/test_plplot_unique_ptr.cpp)
-target_link_libraries(test_plplot_uniqueptr ${PLPLOT_LIBRARIES})
+#add_executable(test_plplot_uniqueptr tests/plc++demos.h tests/test_plplot_unique_ptr.cpp)
+#target_link_libraries(test_plplot_uniqueptr ${PLPLOT_LIBRARIES})
 
-add_executable(test_plplot_helper tests/test_plplot_helper.cpp)
-target_link_libraries(test_plplot_helper ${PLPLOT_LIBRARIES} gtest_main)
+#add_executable(test_plplot_helper tests/test_plplot_helper.cpp)
+#target_link_libraries(test_plplot_helper ${PLPLOT_LIBRARIES} gtest_main)
 
 add_executable(test_yaml tests/test_yaml.cpp)
 target_link_libraries(test_yaml yaml-cpp gtest_main ${HELPER_LIB} main_lib)

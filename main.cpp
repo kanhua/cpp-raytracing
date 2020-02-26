@@ -18,7 +18,7 @@ void load_and_plot(std::string config_file)
 
 
 int main(int argc, char *argv[]) {
-  std::cout << "Hello, World...." <<  argv[1] <<std::endl;
+  std::cout << "Processing...." <<  argv[1] <<std::endl;
   load_and_plot(std::string(argv[1]));
   return 0;
 }

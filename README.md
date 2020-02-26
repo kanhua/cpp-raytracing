@@ -69,7 +69,7 @@ make
 
 In ```build``` directory, run the command ```cpp-raytracing``` using the following usage
 ```
-./cpp-raytracing [config_filename]
+./cpp_raytracing [config_filename]
 ```
 
 ```config_filename``` is a yaml file that sets the lenses and the rays parameters for the program to run.
@@ -78,7 +78,7 @@ In ```build``` directory, run the command ```cpp-raytracing``` using the followi
 For example, if the executable sits in ```build/``` directory in project root folder, you can type:
 
 ```$xslt
-./cpp-raytracing ../examples/single_biconvex_lens.yaml
+./cpp_raytracing ../examples/single_biconvex_lens.yaml
 ```
 Upon successful run, this program should generate a SVG file that plots the ray tracing results.
 You can try other example yaml files in ```examples/``` folder.
